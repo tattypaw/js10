@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            display: flex;
+            justify-content: center;
+            gap: 320px;
+            flex-wrap: wrap;
+        }
+        
+        .human {
+            width: 320px;
+            border: 1px solid #05750b;
+            padding: 16px;
+        }
+        
+        .photo {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+
+    </div>
+    <script src="data.js"></script>
+    <script>
+        const dataEl = JSON.parse(phones);
+        dataEl.forEach(element => {
+            console.log(element);
+        });
+
+        const cardBox = document.querySelector('.card');
+
+        dataEl.forEach(element => {
+            const homoEl = document.createElement('div');
+            homoEl.classList.add('human');
+
+            const h1El = document.createElement('h1');
+            h1El.textContent = element.lastName + ' ' + element.firstName;
+
+            const imgEl = document.createElement('img');
+            imgEl.classList.add('photo');
+            imgEl.src = element.photo;
+
+            const pEl = document.createElement('p');
+            pEl.textContent = element.address.streetAddress + ', ' + element.address.city + ', ' + element.address.postalCode;
+
+            cardBox.appendChild(homoEl);
+            homoEl.appendChild(h1El);
+            homoEl.appendChild(imgEl);
+            homoEl.appendChild(pEl);
+
+        })
+    </script>
+</body>
+
+</html>
